@@ -20,12 +20,15 @@ public class LogoActivity extends Activity implements Handler.Callback {
     @Override
     public boolean handleMessage(Message msg) {
         if (msg.what == 1) {
-            final User currentUser = User.getCurrentUser(User.class);
+            /*final User currentUser = User.getCurrentUser(User.class);
             if (currentUser == null) {
                 startActivity(IntentUtils.generateIntent(this, RegisterActivity.class));
             } else {
                 startActivity(IntentUtils.generateIntent(this, MainActivity.class));
-            }
+            }*/
+
+        startActivity(IntentUtils.generateIntent(this,MainActivity.class));
+
             finish();
             return true;
         }
