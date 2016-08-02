@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions{
+
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+
+    defaultConfig {
+        applicationId "duoy.cn.pubnubtest"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    //pubnub
+    compile 'com.pubnub:pubnub-android:3.7.6'
+    //butterKnife
+    compile 'com.jakewharton:butterknife:7.0.1'
+    //eventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+    //avoscloud-sdk 为 LeanCloud基础包
+    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
+
+    // jackson
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-pcollections:2.7.2'
+
+}
